@@ -36,6 +36,17 @@ app.MapGet("/weatherforecast", () =>
 .WithName("GetWeatherForecast")
 .WithOpenApi();
 
+//Add endpoint to add new weather forecast
+app.MapPost("/weatherforecast", (WeatherForecast weatherForecast) =>
+{
+    // Add the new weather forecast to the database or other storage mechanism.
+    // For this example, we'll just log it to the console.
+    Console.WriteLine($"Added weather forecast: {weatherForecast}");
+})
+.WithName("AddWeatherForecast")
+.WithOpenApi();
+
+
 app.Run();
 
 record WeatherForecast(DateOnly Date, int TemperatureC, string? Summary)
